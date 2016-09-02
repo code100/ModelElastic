@@ -67,28 +67,28 @@ Find/FindFirst
 
 FindById
 ```php
-   	$userId = 10;
-        $user   = Users::findById($userId);
+	$userId = 10;
+	$user   = Users::findById($userId);
 ```
 
 Save/Update
 
 ```php
 	$userId = 10;
-        $user   = Users::findById($userId);
-        if(!$user){
-        	$user = new Users();
-        }
-        
-        $user->username = "abc";
-        if(!$user->save()){
-        	var_dump($user->getMessages());
-        }
-        
-        echo $user->id;
-        
-        $user->email = "abc@test.com";
-        $user->save();
+	$user   = Users::findById($userId);
+	if(!$user){
+		$user = new Users();
+	}
+	
+	$user->username = "abc";
+	if(!$user->save()){
+		var_dump($user->getMessages());
+	}
+	
+	echo $user->id;
+	
+	$user->email = "abc@test.com";
+	$user->save();
 ```
 
 
