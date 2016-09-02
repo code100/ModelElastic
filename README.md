@@ -31,3 +31,66 @@ class Users extends ModelElastic{
 
 ```
 
+if you have another connection/index/type, you can overwrite in your model with initialize
+
+```php
+   public function initialize(){
+          $this->setConnection('<DIFFERENT_CONNECTION>');
+          $this->setIndex('<DIFFERENT_INDEX>');
+          $this->setSource('<DIFFERENT_TYPE>');
+    }
+```
+
+All other phalcon model method like validation, beforeValidation, beforeValidationOnUpdate, etc are available.
+
+```php
+
+   public function beforeValidationOnUpdate(){
+        $this->update_at = time();
+    }
+```
+
+Find/FindFirst
+```php
+        $query =[];
+        $query['bool']['filter'][]['term']['email'] = 'abc@test.com';
+        $query['bool']['filter'][]['term']['status'] = 1;
+	
+	$user = Users::find([
+                        'query'=>$query,
+                            ]);
+                            
+        $user = Users::findFirst([
+                        'query'=>$query,
+                            ]);
+```
+
+FindById
+```php
+   	$userId = 10;
+        $user   = Users::findById($userId);
+```
+
+Save/Update
+
+```php
+	$userId = 10;
+        $user   = Users::findById($userId);
+        if(!$user){
+        	$user = new Users();
+        }
+        
+        $user->username = "abc";
+        if(!$user->save()){
+        	var_dump($user->getMessages());
+        }
+        
+        echo $user->id;
+        
+        $user->email = "abc@test.com";
+        $user->save();
+```
+
+
+
+
