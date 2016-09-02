@@ -1,5 +1,5 @@
 # ModelElastic
-ModelElastic is an ElasticSearch model adapter for Phalcon php, it could do the basic operation like regular phalcon model like find, findFirst.
+ModelElastic is an ElasticSearch model adapter for Phalcon php, it could do the basic operation of phalcon model like find, findFirst, save, count.
 
 ## How to use ModelElastic ##
 Make sure you have [elasticsearch php](https://github.com/elastic/elasticsearch-php) library installed.
