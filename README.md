@@ -15,7 +15,7 @@ $di->set('elastic', function() use (){
 		});
 ```
 
-Build your model just like phalcon model.
+Build your model just like phalcon mysql based model.
 
 ```php
 <?php
@@ -41,7 +41,7 @@ if you have another connection/index/type, you can overwrite in your model with 
     }
 ```
 
-All other phalcon model method like validation, beforeValidation, beforeValidationOnUpdate, etc are available.
+Most of phalcon model methods like validation, beforeValidation, beforeValidationOnUpdate are available.
 
 ```php
 
