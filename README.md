@@ -26,6 +26,7 @@ class Users extends ModelElastic{
 	public $username;
 	public $email;
 	public $password;
+	public $status;
 	public $create_at;
 	public $update_at;
 }
