@@ -1,12 +1,13 @@
 # ModelElastic
-ModelElastic is an ElasticSearch model adapter for Phalcon php, it could do the basic operation of phalcon model like find, findFirst, save, count.
+ModelElastic is an ElasticSearch model adapter for Phalcon php, it could do basic operations of phalcon model like find, findFirst, save, count.
 
 ## How to use ModelElastic ##
-Make sure you have [elasticsearch php](https://github.com/elastic/elasticsearch-php) library installed.
+Make sure you have offical [elasticsearch php](https://github.com/elastic/elasticsearch-php) library installed.
 
 In bootstrap or module, add elasticsearch php as DI.
 
 ```php
+// you can change di name 'elastic', but you'll also need to change getConnection in ModelElastic.php
 $di->set('elastic', function() use (){
                 $clientBuilder = ClientBuilder::create();
                 $clientBuilder->setHosts(['127.0.0.1:9400']); 
@@ -31,7 +32,7 @@ class Users extends ModelElastic{
 
 ```
 
-if you have another connection/index/type, you can overwrite in your model with initialize
+If you have another connection/index/type, you can overwrite in your model with initialize
 
 ```php
    public function initialize(){
@@ -41,7 +42,7 @@ if you have another connection/index/type, you can overwrite in your model with 
     }
 ```
 
-Most of phalcon model methods like validation, beforeValidation, beforeValidationOnUpdate are available.
+Most of phalcon model methods like validation, beforeValidation, beforeValidationOnUpdate are supported.
 
 ```php
 
@@ -66,6 +67,7 @@ Find/FindFirst
 ```
 
 FindById
+
 ```php
 	$userId = 10;
 	$user   = Users::findById($userId);
