@@ -139,7 +139,7 @@ scroll
             foreach($users->items as $row){
                 echo "username is ".$row->username;
                 $row->username = $row->username ."_extra_text";  
-                $row->save() //delete row
+                $row->save() 
             }//end foreach
 
             $users = Users::scroll([
