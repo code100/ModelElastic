@@ -4,6 +4,8 @@ namespace ModelElastic;
 
 use Phalcon\DI;
 use Phalcon\Mvc\EntityInterface;
+use Phalcon\ValidationInterface;
+use Phalcon\Mvc\Model\Message;
 use Phalcon\Mvc\User\Component;
 use ModelElastic\ModelElasticInterface;
 
@@ -226,14 +228,32 @@ class ModelElastic extends Component implements EntityInterface, ModelElasticInt
      * @param  [type] $validator [description]
      * @return [type]            [description]
      */
-    protected function validate($validator)
+    protected function validate(ValidationInterface $validator)
     {
-        if($validator->validate($this) === FALSE){
+        $messages = $validator->validate(null, $this);
 
-            foreach($validator->getMessages() as $message){
-                $this->_errorMessages[] = $message; //add message object to array
+        if(!is_bool($messages)){
+            $messages->rewind();
+
+            while($messages->valid()){
+                $message = $messages->current();
+                $this->appendMEssage(
+                        new Message(
+                            $message->getMessage(),
+                            $message->getField(),
+                            $message->getType()
+                        )
+                );
+
+                $messages->next();
+
             }
+            // If there is a message, it returns false otherwise true
+            return !count($messages);
+
         }
+        return $mesages;
+
     }//end validate
 
     /**
