@@ -36,7 +36,7 @@ class Users extends ModelElastic{
 If you have another connection/index/type, you can overwrite in your model with initialize
 
 ```php
-   public function initialize(){
+public function initialize(){
 	$this->setConnection('<DIFFERENT_CONNECTION>');
 	$this->setIndex('<DIFFERENT_INDEX>');
 	$this->setSource('<DIFFERENT_TYPE>');
@@ -46,22 +46,21 @@ If you have another connection/index/type, you can overwrite in your model with 
 Most of phalcon model methods like validation, beforeValidation, beforeValidationOnUpdate are supported.
 
 ```php
-
-   public function beforeValidationOnUpdate(){
+public function beforeValidationOnUpdate(){
 	$this->update_at = time();
-    }
+	}
 ```
 
 Find/FindFirst
 ```php
-        $c =[];
-        $q =[];
+	$c =[];
+	$q =[];
         $c['bool']['filter'][]['term']['email'] = 'abc@test.com';
         $c['bool']['filter'][]['term']['status'] = 1;
         $q['query'] = $c;
-	$user = Users::findFirst($q);
-	
-	if($user){
+        $user = Users::findFirst($q);
+        
+        if($user){
 	  echo $user->id;
 	}
 ```
@@ -76,7 +75,7 @@ Find
         $q['max_total'] = 2000; //max return 2000 items
         $q['page']      = 1;
         $q['limit']     = 40; //items per page
-	$user = Users::find($q);
+        $user = Users::find($q);
 	
 	if($user){
 		echo "total items: ". $user->total_items."<br>";
