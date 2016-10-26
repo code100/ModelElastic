@@ -1,0 +1,12 @@
+{
+    "name": "modelelastic/modelelastic",
+    "description": "ElasticSearch model adapter for Phalcon",
+    "minimum-stability": "dev",
+    "require": {
+	  },
+	  "autoload": {
+        "psr-0": {
+            "ModelElastic": "/"
+        }
+    }
+}
