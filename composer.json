@@ -1,6 +1,12 @@
 {
     "name": "modelelastic/modelelastic",
     "description": "ElasticSearch model adapter for Phalcon",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your@name.com"
+        }
+    ],
     "minimum-stability": "dev",
     "require": {
 	  },
